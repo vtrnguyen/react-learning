@@ -1,11 +1,13 @@
-import React from 'react'
+import React from 'react';
 import ChildComponent from './ChildComponent';
-
 class MyComponent extends React.Component {
 
     state = {
-        firstName: '',
-        lastName: ''
+        arrJobs: [
+            {id: 'job1', title: 'Developers', salary: '500 $'},
+            {id: 'job2', title: 'Testers', salary: '400 $'},
+            {id: 'job3', title: 'Project Managers', salary: '1000 $'},
+        ]
     };
 
     handleChangeFirstName = (e) => {
@@ -50,11 +52,10 @@ class MyComponent extends React.Component {
                     >
                     </input>
                 </form>
-                <p>Tên của tôi là: {this.state.firstName}</p>
-                <p>Năm nay tôi được: {this.state.lastName} tuổi</p>
-                <ChildComponent name="name 1"/>
-                <ChildComponent name="name 2"/>
-                <ChildComponent name="name 3"/>
+                <ChildComponent 
+                    name={ this.state.firstName + ' ' + this.state.lastName } 
+                    arrJobs={ this.state.arrJobs }
+                />
             </>
         )
     }
