@@ -1,5 +1,7 @@
 import React from 'react';
 import ChildComponent from './ChildComponent';
+import AddComponent from './AddComponent';
+
 class MyComponent extends React.Component {
 
     state = {
@@ -10,51 +12,29 @@ class MyComponent extends React.Component {
         ]
     };
 
-    handleChangeFirstName = (e) => {
+    addNewJob = (job) => {
+        console.log('>>> check job from parent: ', job);
+        // toán tử [...arr, a] dùng để nối mảng arr với phần tử a 
         this.setState({
-            firstName: e.target.value
+            arrJobs: [...this.state.arrJobs, job]
         })
     }
 
-    handleChangeLastName = (e) => {
+    deleteAJob = (job) => {
+        let currentJobs = this.state.arrJobs;
+        currentJobs = currentJobs.filter(item => item.id !== job.id);
         this.setState({
-            lastName: e.target.value
+            arrJobs: currentJobs
         })
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('>>> check data ', this.state);
     }
  
     render() {
-        console.log('>>> call render: ', this.state);
         return (
             <>
-                <form>
-                    <label htmlFor="fname">First name:</label><br />
-                        <input 
-                            type="text" 
-                            value={this.state.firstName}
-                            onChange={(e) => this.handleChangeFirstName(e)}
-                        >
-                        </input>
-                        <br />
-                    <label htmlFor="lname">Last name:</label><br />
-                        <input 
-                            type="text" 
-                            value={this.state.lastName}
-                            onChange={(e) => this.handleChangeLastName(e)}
-                        >
-                        </input><br />
-                    <input type="submit" value="submit"
-                    onClick={(e) => this.handleSubmit(e)}              
-                    >
-                    </input>
-                </form>
+                <AddComponent addNewJob={this.addNewJob}/>
                 <ChildComponent 
-                    name={ this.state.firstName + ' ' + this.state.lastName } 
                     arrJobs={ this.state.arrJobs }
+                    deleteAJob = {this.deleteAJob}
                 />
             </>
         )
