@@ -66,7 +66,11 @@ class ListToDo extends React.Component {
         let isEmptyObj = Object.keys(editToDo).length === 0;
 
         return (
-            <div className="list-to-do-container">
+            <>
+                <p>
+                    Simple To do app with origin dev
+                </p>
+                <div className="list-to-do-container">
                 <AddToDo 
                     addToDo={ this.addToDo }    
                 />
@@ -113,7 +117,8 @@ class ListToDo extends React.Component {
                             })
                     }
                 </div>
-            </div>
+                </div>
+            </>
         )
     }
 }

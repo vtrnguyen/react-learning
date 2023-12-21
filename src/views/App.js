@@ -1,39 +1,54 @@
 import logo from './logo.svg';
 import './App.scss';
-// import MyComponent from './Example/MyComponent';
+import MyComponent from './Example/MyComponent';
 import ListToDo from './ToDoLists/ListToDo';
 // import ToDoListComponent from './Example/ToDoListComponent';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Nav from './Nav/Nav';
+import Home from './Example/Home';
+
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Simple To do app with origin dev
-        </p>
-        
-        {/* <MyComponent/> */}
-        {/* <ToDoListComponent /> */}
-        <ListToDo />
-        
-      </header>
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <Nav /> 
+          <img src={logo} className="App-logo" alt="logo" />
+          
+            <Routes>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/todo" element={<ListToDo />}></Route>
+              <Route path="/about" element={<MyComponent />}></Route>
+              <Route path="/home" element={<Home />}></Route>
+            </Routes>
 
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="dark"
-      />
-    </div>
+        </header>
+
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </div>
+
+    </BrowserRouter>
+    
   );
 }
 
