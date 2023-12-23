@@ -7,6 +7,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Nav from './Nav/Nav';
 import Home from './Example/Home';
+import ListUser from './Users/ListUser';
+import DetailUser from './Users/DetailUser';
 
 import {
   BrowserRouter,
@@ -29,6 +31,8 @@ function App() {
               <Route path="/todo" element={<ListToDo />}></Route>
               <Route path="/about" element={<MyComponent />}></Route>
               <Route path="/home" element={<Home />}></Route>
+              <Route path="/users" element={<ListUser />}></Route>
+              <Route path="/users/:id" element={<DetailUser />}></Route>
             </Routes>
 
         </header>
